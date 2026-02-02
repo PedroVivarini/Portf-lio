@@ -58,7 +58,6 @@
         <div class="container">
             <h2 class="titulo-secao">Veja os projetos em destaque</h2>
 
-            <!-- Carrossel de Projetos -->
             <div class="carrossel-projetos">
                 <button class="carrossel-seta carrossel-anterior" onclick="moverCarrossel(-1)">&#10094;</button>
                 <button class="carrossel-seta carrossel-proximo" onclick="moverCarrossel(1)">&#10095;</button>
@@ -75,7 +74,6 @@
                             </div>
                         </div>
 
-                        <!-- Projeto 2 - Tech News -->
                         <div class="card-projeto" onclick="abrirModal(1)">
                             <div class="card-imagem-wrapper">
                                 <img src="img/shoptec1.png" class="card-capa" alt="Shoptec">
@@ -86,7 +84,6 @@
                             </div>
                         </div>
 
-                        <!-- Projeto 3 - App Financeiro -->
                         <div class="card-projeto" onclick="abrirModal(2)">
                             <div class="card-imagem-wrapper">
                                 <img src="img/mobile1.png" class="card-capa" alt="APP Hábitos Saudáveis">
@@ -97,7 +94,6 @@
                             </div>
                         </div>
 
-                        <!-- Projeto 4 - Exemplo para futuro -->
                         <div class="card-projeto" onclick="abrirModal(3)">
                             <div class="card-imagem-wrapper">
                                 <img src="img/port1.png" class="card-capa" alt="Portfólio">
@@ -108,7 +104,6 @@
                             </div>
                         </div>
 
-                        <!-- Projeto 5 - Exemplo para futuro -->
                         <div class="card-projeto" onclick="abrirModal(4)">
                             <div class="card-imagem-wrapper">
                                 <img src="img/interrogação.png" class="card-capa" alt="Dashboard Analytics">
@@ -121,13 +116,11 @@
                     </div>
                 </div>
 
-                <!-- Indicadores do carrossel -->
                 <div class="carrossel-indicadores" id="carrossel-indicadores"></div>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Projeto -->
     <div id="modal-projeto" class="modal">
         <div class="modal-content">
             <button class="modal-fechar" onclick="fecharModal()">&times;</button>
@@ -147,7 +140,6 @@
                     </div>
                     <div class="modal-tags" id="modal-tags"></div>
                     <div class="modal-links" id="modal-links">
-                        <!-- Botões serão inseridos dinamicamente via JS -->
                     </div>
                 </div>
             </div>
@@ -180,7 +172,6 @@
     </footer>
 
     <script>
-        // Scroll suave para seções
         function scrollToSection(event, sectionId) {
             event.preventDefault();
             const section = document.getElementById(sectionId);
@@ -189,7 +180,6 @@
             }
         }
 
-        // Dados dos projetos
         const projetos = [
             {
                 titulo: "Tabelas de Produtos Zeiss",
@@ -197,7 +187,6 @@
                 imagens: ["img/zeiss1.png", "img/zeiss2.png", "img/zeiss4.png", "img/zeiss5.png", "img/zeiss3.png"],
                 tags: ["Java", "Spring Boot", "PostgreSQL"],
                 codigo: "https://github.com/PedroVivarini",
-                // Adicione esta linha quando tiver deploy
             },
             {
                 titulo: "Shoptec",
@@ -218,9 +207,10 @@
             {
                 titulo: "Portfólio",
                 descricao: "Este é o meu portfólio pessoal, desenvolvido para centralizar meus projetos, experiências e facilitar o contato para futuros trabalhos como freelancer. Optei por construí-lo utilizando apenas HTML e CSS, aproveitando a leveza dessas tecnologias para criar um site rápido, performático e com código limpo. O objetivo principal é apresentar de forma clara minhas habilidades em desenvolvimento mobile, frontend e backend, além de demonstrar como posso transformar ideias em sistemas funcionais. Como o projeto possui uma estrutura focada em apresentação de conteúdo, o uso dessas tecnologias puras garantiu um carregamento ágil e uma manutenção simplificada..",
-                imagens: ["img/port1.png","img/port2.png", "img/port3.png"],
+                imagens: ["img/port1.png", "img/port2.png", "img/port3.png"],
                 tags: ["CSS", "HTML"],
-                codigo: "https://github.com/PedroVivarini/Portif-lio.git",
+                codigo: "https://github.com/PedroVivarini/Portf-lio.git",
+                site: "https://portifoliopedrovivarini.netlify.app"
 
             }
 
@@ -229,7 +219,6 @@
         let projetoAtual = 0;
         let fotoAtual = 0;
 
-        // ========== CARROSSEL DE PROJETOS ==========
         let carrosselIndex = 0;
         const cardsPorView = window.innerWidth < 800 ? 1 : 3;
         const totalCards = document.querySelectorAll('.card-projeto').length;
@@ -240,7 +229,6 @@
             const cardWidth = track.querySelector('.card-projeto').offsetWidth + 30; // + gap
             track.style.transform = `translateX(-${carrosselIndex * cardWidth}px)`;
 
-            // Atualizar indicadores
             const indicadores = document.querySelectorAll('.carrossel-indicador');
             indicadores.forEach((ind, i) => {
                 ind.classList.toggle('active', i === carrosselIndex);
@@ -254,7 +242,6 @@
             atualizarCarrossel();
         }
 
-        // Criar indicadores
         function criarIndicadores() {
             const container = document.getElementById('carrossel-indicadores');
             for (let i = 0; i <= maxIndex; i++) {
@@ -268,7 +255,6 @@
             }
         }
 
-        // ========== MODAL ==========
         function abrirModal(index) {
             projetoAtual = index;
             fotoAtual = 0;
@@ -278,11 +264,9 @@
             document.getElementById('modal-descricao').textContent = projeto.descricao;
             document.getElementById('modal-imagem').src = projeto.imagens[0];
 
-            // Gerar botões dinamicamente
             const linksContainer = document.getElementById('modal-links');
             let botoesHTML = '';
 
-            // Botão "Ir para o site" (só aparece se tiver a propriedade 'site')
             if (projeto.site) {
                 botoesHTML += `
                     <a href="${projeto.site}" class="modal-btn modal-btn-primario" target="_blank">
@@ -291,7 +275,6 @@
                 `;
             }
 
-            // Botão "Código fonte" (sempre aparece)
             botoesHTML += `
                 <a href="${projeto.codigo}" class="modal-btn modal-btn-outline" target="_blank">
                     <i class="fab fa-github"></i> Código fonte
@@ -300,11 +283,9 @@
 
             linksContainer.innerHTML = botoesHTML;
 
-            // Tags
             const tagsContainer = document.getElementById('modal-tags');
             tagsContainer.innerHTML = projeto.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
 
-            // Pontos
             const pontosContainer = document.getElementById('modal-pontos');
             pontosContainer.innerHTML = projeto.imagens.map((_, i) =>
                 `<span class="modal-ponto ${i === 0 ? 'active' : ''}" onclick="irParaFoto(${i})"></span>`
@@ -344,24 +325,20 @@
             });
         }
 
-        // Fechar modal ao clicar fora
         document.getElementById('modal-projeto').addEventListener('click', function (e) {
             if (e.target === this) {
                 fecharModal();
             }
         });
 
-        // Fechar com ESC
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 fecharModal();
             }
         });
 
-        // Inicializar
         criarIndicadores();
 
-        // Atualizar no resize
         window.addEventListener('resize', () => {
             atualizarCarrossel();
         });
