@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio | Pedro Vivarini</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/logo.jpeg">
+    <base target="_blank">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-flex">
+            <div class="nav-brand">
+                <div class="nav-logo-wrapper">
+                    <img src="img/pv.png" alt="Logotipo" class="nav-logo">
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#sobre" onclick="scrollToSection(event, 'sobre')" class="nav-link"><i
+                            class="fas fa-user"></i> Sobre</a></li>
+                <li><a href="#projetos" onclick="scrollToSection(event, 'projetos')" class="nav-link"><i
+                            class="fas fa-code"></i> Projetos</a></li>
+                <li><a href="#contato" onclick="scrollToSection(event, 'contato')" class="nav-link"><i
+                            class="fas fa-envelope"></i> Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="sobre" class="hero">
+        <div class="container">
+            <div class="foto-perfil-container">
+                <img src="img/Pedro.jpeg" alt="Pedro Vivarini" class="foto-perfil">
+                <i class="fas fa-code icone-codigo"></i>
+            </div>
+            <p class="intro-text">Olá! Meu nome é <span class="destaque-rosa">Pedro Vivarini</span> e sou</p>
+            <h1>Desenvolvedor Fullstack</h1>
+            <p class="bio-text"><strong>Disponível para projetos Freelancer:</strong> Transformo ideias em soluções
+                digitais robustas e escaláveis. ajudo empresas e
+                empreendedores a tirarem seus projetos do papel com foco em performance e segurança.</p>
+            <div class="badges-tech">
+                <span><i class="devicon-react-original colored"></i> React</span>
+                <span><i class="devicon-react-original colored"></i> React Native</span>
+                <span><i class="devicon-java-plain colored"></i> Java</span>
+                <span><i class="devicon-spring-plain colored"></i> Spring Boot</span>
+                <span><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+                <span><i class="fab fa-github"></i> GitHub</span>
+            </div>
+        </div>
+    </header>
+
+    <section id="projetos" class="projetos-section">
+        <div class="container">
+            <h2 class="titulo-secao">Veja os projetos em destaque</h2>
+
+            <!-- Carrossel de Projetos -->
+            <div class="carrossel-projetos">
+                <button class="carrossel-seta carrossel-anterior" onclick="moverCarrossel(-1)">&#10094;</button>
+                <button class="carrossel-seta carrossel-proximo" onclick="moverCarrossel(1)">&#10095;</button>
+
+                <div class="carrossel-container">
+                    <div class="carrossel-track" id="carrossel-track">
+                        <div class="card-projeto" onclick="abrirModal(0)">
+                            <div class="card-imagem-wrapper">
+                                <img src="img/zeiss1.png" class="card-capa" alt="Tabelas de Produtos Zeiss">
+                            </div>
+                            <div class="card-info">
+                                <h3>Tabelas de Produtos Zeiss</h3>
+                                <p>Gestão de tabelas de preços, controle e acesso.</p>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 2 - Tech News -->
+                        <div class="card-projeto" onclick="abrirModal(1)">
+                            <div class="card-imagem-wrapper">
+                                <img src="img/shoptec1.png" class="card-capa" alt="Shoptec">
+                            </div>
+                            <div class="card-info">
+                                <h3>Shoptec</h3>
+                                <p>Loja de Roupas Stretwear.</p>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 3 - App Financeiro -->
+                        <div class="card-projeto" onclick="abrirModal(2)">
+                            <div class="card-imagem-wrapper">
+                                <img src="img/mobile1.png" class="card-capa" alt="APP Hábitos Saudáveis">
+                            </div>
+                            <div class="card-info">
+                                <h3>Hábitos Saudáveis</h3>
+                                <p>Aplicativo Mobile de hábitos para estabeler metas</p>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 4 - Exemplo para futuro -->
+                        <div class="card-projeto" onclick="abrirModal(3)">
+                            <div class="card-imagem-wrapper">
+                                <img src="img/port1.png" class="card-capa" alt="Portfólio">
+                            </div>
+                            <div class="card-info">
+                                <h3>Portfólio</h3>
+                                <p>Site para mostrar meus projetos.</p>
+                            </div>
+                        </div>
+
+                        <!-- Projeto 5 - Exemplo para futuro -->
+                        <div class="card-projeto" onclick="abrirModal(4)">
+                            <div class="card-imagem-wrapper">
+                                <img src="img/interrogação.png" class="card-capa" alt="Dashboard Analytics">
+                            </div>
+                            <div class="card-info">
+                                <h3>Novidades em breve...</h3>
+                                <p>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Indicadores do carrossel -->
+                <div class="carrossel-indicadores" id="carrossel-indicadores"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Projeto -->
+    <div id="modal-projeto" class="modal">
+        <div class="modal-content">
+            <button class="modal-fechar" onclick="fecharModal()">&times;</button>
+            <div class="modal-body">
+                <div class="modal-galeria">
+                    <button class="modal-seta modal-anterior" onclick="mudarFotoModal(-1)">&#10094;</button>
+                    <button class="modal-seta modal-proxima" onclick="mudarFotoModal(1)">&#10095;</button>
+                    <div class="modal-imagem-container">
+                        <img id="modal-imagem" src="" alt="Projeto">
+                    </div>
+                    <div class="modal-pontos" id="modal-pontos"></div>
+                </div>
+                <div class="modal-info">
+                    <h2 id="modal-titulo"></h2>
+                    <div class="modal-descricao-scroll">
+                        <p id="modal-descricao"></p>
+                    </div>
+                    <div class="modal-tags" id="modal-tags"></div>
+                    <div class="modal-links" id="modal-links">
+                        <!-- Botões serão inseridos dinamicamente via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contato" class="footer-custom">
+        <div class="container footer-center">
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/pedrovivarini/" class="footer-btn" target="_blank">
+                    <span><i class="fab fa-linkedin"></i> LinkedIn</span>
+                    <i class="fas fa-arrow-up-right-from-square seta-link"></i>
+                </a>
+                <a href="https://github.com/PedroVivarini" class="footer-btn" target="_blank">
+                    <span><i class="fab fa-github"></i> GitHub</span>
+                    <i class="fas fa-arrow-up-right-from-square seta-link"></i>
+                </a>
+                <a href="mailto:pedrohenriquevivarini@gmail.com" class="footer-btn">
+                    <span><i class="fas fa-envelope"></i> E-mail</span>
+                    <i class="fas fa-arrow-up-right-from-square seta-link"></i>
+                </a>
+                <a href="curriculo/Pedro Henrique Vivarini De Souza.pdf" class="footer-btn"
+                    download="CV_Pedro_Vivarini.pdf">
+                    <span><i class="fas fa-file-download"></i> Currículo</span>
+                    <i class="fas fa-arrow-down seta-link"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2026 Pedro Vivarini. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll suave para seções
+        function scrollToSection(event, sectionId) {
+            event.preventDefault();
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Dados dos projetos
+        const projetos = [
+            {
+                titulo: "Tabelas de Produtos Zeiss",
+                descricao: "Este foi o meu projeto final do curso Serratec em parceria com a ZEISS, desenvolvido por uma equipe de 6 integrantes. Atuei no desenvolvimento backend, sendo responsável pela lógica de negócios envolvendo diferentes níveis de acesso, como Usuários, Clientes e Clientes Indiretos. Além de estruturar CRUDs especializados, implementei sistemas de exportação de dados e logs de movimentação para garantir a rastreabilidade do sistema. Utilizando Spring Security, assegurei o fluxo de redefinição de senhas e a proteção das rotas. Todo o ciclo de desenvolvimento foi gerenciado com Git/GitHub, garantindo um versionamento organizado e eficiente.",
+                imagens: ["img/zeiss1.png", "img/zeiss2.png", "img/zeiss4.png", "img/zeiss5.png", "img/zeiss3.png"],
+                tags: ["Java", "Spring Boot", "PostgreSQL"],
+                codigo: "https://github.com/PedroVivarini",
+                // Adicione esta linha quando tiver deploy
+            },
+            {
+                titulo: "Shoptec",
+                descricao: "Este foi o meu projeto focado em Frontend, desenvolvido de forma colaborativa por uma equipe de 4 integrantes. Utilizando HTML5 e CSS3, fui responsável pelo desenvolvimento da seção da loja, onde foquei na organização de pastas e otimização de imagens para garantir um carregamento eficiente. Implementei diversas interatividades e mini-animações com efeitos hover, elevando a experiência visual do usuário. Além disso, utilizei o framework Bootstrap para estruturar componentes essenciais.",
+                imagens: ["img/shoptec1.png", "img/shoptec2.png", "img/shoptec3.png"],
+                tags: ["HTML", "CSS"],
+                codigo: "https://github.com/PedroVivarini/TRABALHO_FINAL_FRONT.git",
+                site: "https://shoptecstreet.netlify.app"
+            },
+            {
+                titulo: "Hábitos Saudáveis",
+                descricao: "Este foi o meu projeto final de React Native, desenvolvido em uma equipe de 5 integrantes. Minha atuação focou na estruturação inicial do app e na organização das pastas para garantir um código limpo e escalável. Implementei o sistema de navegação utilizando Bottom Tabs e desenvolvi o fluxo completo de Ajustes, que engloba as telas de Minha Conta, Salvos, Sobre e Estatísticas. A aplicação foi construída com TypeScript, utilizando o Vite para otimizar o ambiente de desenvolvimento..",
+                imagens: ["img/mobile2.png", "img/mobile3.png", "img/mobile4.png", "img/mobile5.png", "img/mobile6.png"],
+                tags: ["React Native", "TypeScript", "Vite"],
+                codigo: "https://github.com/PedroVivarini/TRABALHO_FINAL_MOBILE.git",
+
+            },
+            {
+                titulo: "Portfólio",
+                descricao: "Este é o meu portfólio pessoal, desenvolvido para centralizar meus projetos, experiências e facilitar o contato para futuros trabalhos como freelancer. Optei por construí-lo utilizando apenas HTML e CSS, aproveitando a leveza dessas tecnologias para criar um site rápido, performático e com código limpo. O objetivo principal é apresentar de forma clara minhas habilidades em desenvolvimento mobile, frontend e backend, além de demonstrar como posso transformar ideias em sistemas funcionais. Como o projeto possui uma estrutura focada em apresentação de conteúdo, o uso dessas tecnologias puras garantiu um carregamento ágil e uma manutenção simplificada..",
+                imagens: ["img/port1.png","img/port2.png", "img/port3.png"],
+                tags: ["CSS", "HTML"],
+                codigo: "https://github.com/PedroVivarini/Portif-lio.git",
+
+            }
+
+        ];
+
+        let projetoAtual = 0;
+        let fotoAtual = 0;
+
+        // ========== CARROSSEL DE PROJETOS ==========
+        let carrosselIndex = 0;
+        const cardsPorView = window.innerWidth < 800 ? 1 : 3;
+        const totalCards = document.querySelectorAll('.card-projeto').length;
+        const maxIndex = Math.max(0, totalCards - cardsPorView);
+
+        function atualizarCarrossel() {
+            const track = document.getElementById('carrossel-track');
+            const cardWidth = track.querySelector('.card-projeto').offsetWidth + 30; // + gap
+            track.style.transform = `translateX(-${carrosselIndex * cardWidth}px)`;
+
+            // Atualizar indicadores
+            const indicadores = document.querySelectorAll('.carrossel-indicador');
+            indicadores.forEach((ind, i) => {
+                ind.classList.toggle('active', i === carrosselIndex);
+            });
+        }
+
+        function moverCarrossel(direcao) {
+            carrosselIndex += direcao;
+            if (carrosselIndex < 0) carrosselIndex = maxIndex;
+            if (carrosselIndex > maxIndex) carrosselIndex = 0;
+            atualizarCarrossel();
+        }
+
+        // Criar indicadores
+        function criarIndicadores() {
+            const container = document.getElementById('carrossel-indicadores');
+            for (let i = 0; i <= maxIndex; i++) {
+                const indicador = document.createElement('span');
+                indicador.className = `carrossel-indicador ${i === 0 ? 'active' : ''}`;
+                indicador.onclick = () => {
+                    carrosselIndex = i;
+                    atualizarCarrossel();
+                };
+                container.appendChild(indicador);
+            }
+        }
+
+        // ========== MODAL ==========
+        function abrirModal(index) {
+            projetoAtual = index;
+            fotoAtual = 0;
+            const projeto = projetos[index];
+
+            document.getElementById('modal-titulo').textContent = projeto.titulo;
+            document.getElementById('modal-descricao').textContent = projeto.descricao;
+            document.getElementById('modal-imagem').src = projeto.imagens[0];
+
+            // Gerar botões dinamicamente
+            const linksContainer = document.getElementById('modal-links');
+            let botoesHTML = '';
+
+            // Botão "Ir para o site" (só aparece se tiver a propriedade 'site')
+            if (projeto.site) {
+                botoesHTML += `
+                    <a href="${projeto.site}" class="modal-btn modal-btn-primario" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Ir para o site
+                    </a>
+                `;
+            }
+
+            // Botão "Código fonte" (sempre aparece)
+            botoesHTML += `
+                <a href="${projeto.codigo}" class="modal-btn modal-btn-outline" target="_blank">
+                    <i class="fab fa-github"></i> Código fonte
+                </a>
+            `;
+
+            linksContainer.innerHTML = botoesHTML;
+
+            // Tags
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = projeto.tags.map(tag => `<span class="tag">${tag}</span>`).join('');
+
+            // Pontos
+            const pontosContainer = document.getElementById('modal-pontos');
+            pontosContainer.innerHTML = projeto.imagens.map((_, i) =>
+                `<span class="modal-ponto ${i === 0 ? 'active' : ''}" onclick="irParaFoto(${i})"></span>`
+            ).join('');
+
+            document.getElementById('modal-projeto').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-projeto').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function mudarFotoModal(direcao) {
+            const projeto = projetos[projetoAtual];
+            fotoAtual += direcao;
+
+            if (fotoAtual < 0) fotoAtual = projeto.imagens.length - 1;
+            if (fotoAtual >= projeto.imagens.length) fotoAtual = 0;
+
+            atualizarFotoModal();
+        }
+
+        function irParaFoto(index) {
+            fotoAtual = index;
+            atualizarFotoModal();
+        }
+
+        function atualizarFotoModal() {
+            const projeto = projetos[projetoAtual];
+            document.getElementById('modal-imagem').src = projeto.imagens[fotoAtual];
+
+            const pontos = document.querySelectorAll('.modal-ponto');
+            pontos.forEach((ponto, i) => {
+                ponto.classList.toggle('active', i === fotoAtual);
+            });
+        }
+
+        // Fechar modal ao clicar fora
+        document.getElementById('modal-projeto').addEventListener('click', function (e) {
+            if (e.target === this) {
+                fecharModal();
+            }
+        });
+
+        // Fechar com ESC
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                fecharModal();
+            }
+        });
+
+        // Inicializar
+        criarIndicadores();
+
+        // Atualizar no resize
+        window.addEventListener('resize', () => {
+            atualizarCarrossel();
+        });
+    </script>
+</body>
+
+</html>
